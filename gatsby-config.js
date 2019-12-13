@@ -79,7 +79,7 @@ module.exports = {
       resolve: "gatsby-plugin-less",
       options: {
         cssLoaderOptions: {
-          modules: true,
+          // modules: true,
         },
       },
     },

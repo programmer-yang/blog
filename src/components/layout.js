@@ -5,7 +5,8 @@ import MoonOrSun from "./moonorsun"
 
 import { rhythm, scale } from "../utils/typography"
 
-import styles from "./layout.less"
+// import styles from "./layout.less"
+import "./layout.less"
 
 class Layout extends React.Component {
   render() {
@@ -71,7 +72,8 @@ class Layout extends React.Component {
           <ThemeToggler>
             {({ theme, toggleTheme }) => (
               <MoonOrSun
-                className={styles.action}
+                // className={styles.action}
+                className="layout-theme-action"
                 isDark={theme === "dark"}
                 onChange={bool => toggleTheme(bool ? "dark" : "light")}
               />
