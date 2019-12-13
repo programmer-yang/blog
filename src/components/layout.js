@@ -82,7 +82,7 @@ class Layout extends React.Component {
         </header>
         <main>{children}</main>
         <footer>
-          <a href="https://www.gatsbyjs.org">Github</a>
+          <a href="https://github.com/programmer-yang/blog">Github</a>
         </footer>
       </div>
     )
