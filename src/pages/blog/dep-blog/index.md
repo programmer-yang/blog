@@ -8,12 +8,40 @@ description: "记录构建这个Blog的过程"
 
 这个 Blog 我选了一个我很不熟悉的技术栈，假装这就是跳出舒适圈吧。
 
+![002](./002.jpg)
+
 先说说我的诉求，我希望我的 Blog 可控性比较高，这样方便我做一些自己想做的事情。然后我希望它尽可能的简洁跟简单，个人有点极简主义。然后我希望 Blog 的内容使用 MarkDown 编写，最后我希望它可以自动部署，我 push 到 Github 就可以自动发布。
 
 好吧，就这些，让我们开始吧。
 
 [Gatsby](https://github.com/gatsbyjs/gatsby) 是一个很优秀的基于 React 的开源架构，使用它，你可以很方便的构建你的网站，它已经帮你做了很多事情。我很久前就有学习它的计划，但一直搁置，这次我选择使用它。
 
-更新中
+使用 Gatsby 跟我使用之前的 React 架构最大的区别应该是在数据资源层上，Gatsby 有一个内置的数据层，是基于 GraphQL 的，这个数据层包含了你开发过程需要的所有资源，比如，图片、视频、JSON 数据等。GraphQL 是一种查询语言，我在几年前就开始关注，但因为使用起来需要涉及到服务端的改造，就一只停留在会基础的使用中，没有深入了解，我计划会在另一篇博客中在讲讲我的理解，这里就不明细说了。
 
-![002](./002.jpg)
+使用 Gatsby 开发 Blog 系统，markdown 文件也是一种静态资源，在开发过程中使用 GraphQL 可以获取到，例如：
+
+```js{8-17}
+export const pageQuery = graphql`
+  query BlogPostBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      excerpt(pruneLength: 160)
+      html
+      frontmatter {
+        title
+        date(formatString: "YYYY-MM-DD")
+        description
+      }
+    }
+  }
+`
+```
+
+其中 8-17 行就是使用`gatsby-transformer-remark`插件来解析 Markdown 的过程，Gatsby 的[插件](https://www.gatsbyjs.org/plugins/)功能很强大，官方和社区也提供了很多很优秀的插件，可以极大的简化开发过程。
+
+更新中
