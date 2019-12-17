@@ -1,7 +1,7 @@
 ---
 title: 构建一个Blog
 date: "2019-12-13"
-description: "记录构建这个Blog的过程"
+description: "简单描述这个Blog用到的技术"
 ---
 
 这个 Blog 我选了一个我很不熟悉的技术栈，假装这就是跳出舒适圈吧。
